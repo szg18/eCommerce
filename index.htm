@@ -1,0 +1,174 @@
+<doctype!HTML>
+<html>
+   <head>
+       <title>Wig Mania: Online Fashion and Cosplay Wigs</title>
+       <link  rel="shortcut icon" href="scissorfavicon.ico" type = "image/x-icon"/>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <style>
+           * {
+               box-sizing: border-box;
+           }
+           html {
+               background-color: #cbefe6;
+               font-family: verdana, sans-serif;
+           }
+           #header {
+               background-color: #00cc99;
+               color: #ffffff;
+               padding: 10px;
+               text-align: center;
+               vertical-align: center;
+           }
+           h1 {
+               font-size: 18pt;
+               padding-top: 10px;
+               padding-bottom: 10px;
+           }
+           h3 {
+               font-size: 14px;
+           }
+           #wigs {
+               background-color: #cbefe6;
+               column-count: 3;
+               column-gap: normal;
+               column-rule: 10px solid #00cc99;
+               text-align: center;
+           }
+           img {
+               border: 3px solid #4c665f;
+               display: block;
+               margin-left: auto;
+               margin-right: auto;
+               padding: 1px;
+               width : 150px;
+           }
+           span {
+               display: block;
+               margin-left: auto;
+               margin-right: auto;
+               font-weight: bold;
+           }
+           h2 {
+               font-size : 24pt;
+               text-align: center;
+           }
+           #medium, #long {
+               padding-top: 25px;
+           }
+           p {
+               text-align: center;
+           }
+           input {
+               text-align: center;
+               width : 30px;
+           }
+           #buttonclick {
+               text-align: center;
+           }
+           button {
+               background-color: #4CAF50;
+               border: none;
+               border-radius: 12px;
+               color: white;
+               text-decoration: none;
+               display: inline-block;
+               font-size: 16px;
+               width : 80px;
+               height : 35px;
+               text-align: center;
+               vertical-align: absolute;
+               margin: auto;
+           }
+           #output {
+               text-align: center;
+               font-size: 20px;
+           }
+       </style>
+       <script>
+           var p1 = {};
+           var p2 = {};
+           var p3 = {};
+           var wp1 = {};
+           var wp2 = {};
+           var wp3 = {};
+     
+           function initprice(){
+               p1 = 29.99;
+               p2 = 35.99;
+               p3 = 41.99;
+               var span1 = document.getElementById("price1");
+               var span2 = document.getElementById("price2");
+               var span3 = document.getElementById("price3");
+               span1.innerHTML = "$" + p1;
+               span2.innerHTML = "$" + p2;
+               span3.innerHTML = "$" + p3;
+           }
+
+           function purchase(){
+               var quantity1 = document.getElementById("quantity1");
+               var quantity2 = document.getElementById("quantity2");
+               var quantity3 = document.getElementById("quantity3");
+               var output = document.getElementById("output");
+               var wp1 = 20;
+               var wp2 = 25;
+               var wp3 = 30;
+               var subtotal = (parseFloat(p1) * parseFloat(quantity1.value)) + (parseFloat(p2) * parseFloat(quantity2.value)) + (parseFloat(p3) * parseFloat(quantity3.value));
+               var csubtotal = (parseFloat(wp1) * quantity1.value) + (parseFloat(wp2) * quantity2.value) + (parseFloat(wp3) * quantity3.value);
+               var tax = subtotal * 0.0875;
+               var shipping;
+               if (subtotal < 100){
+                   shipping = 25.00;
+               } else if (subtotal >= 100 && subtotal <= 200){
+                   shipping = 10.00;
+               } else if (subtotal > 200){
+                   shipping = 0.00;
+               }
+               var total = subtotal + tax + shipping;
+               var profit = total - csubtotal;
+               var build = "";
+               build += "Subtotal: $" + subtotal+ "<br>";
+               build += "Taxes: $" + tax.toFixed(2) + "<br>";
+               build += "Shipping: $" + shipping + "<br>";
+               build += "___________________<br>";
+               build += "Total: $"+ total.toFixed(2) + "<br>";
+               output.innerHTML = build;
+              
+           console.log("Customer Total: $" + total.toFixed(2) + "\n");
+           console.log("Wholesale Total: $" + csubtotal + "\n");
+           console.log("___________________\n");
+           console.log("Profit: $"+ profit.toFixed(2) + "\n");
+           }
+       </script>
+   </head>
+   <body onload="initprice()">
+       <div id="header">
+           <h1>Wig Mania!</h1>
+           <h3>We provide high quality fiber wigs that can be used for cosplay and fashion.</h3>
+       </div>
+       <div id="wigs">
+           <h2 id = "short">Short Wig</h2>
+           <img src = "images\Silky_Cosplay_Wig_Caine_SI-005_Fire_Red_1.jpg"><br>
+           <span id = "price1"> </span>
+           <p id = "s">A beautiful short and silky fire red wig. Overall length measures 4" to 5" (10 cm to 13 cm). This wig has no skin top and is thick - good for spiking, teasing, fluffing or leaving as is.</p><br><br>
+           <input id ="quantity1" type = "text">
+
+           <h2 id = "medium">Medium Wig</h2>
+           <img src = "images\Silky_Cosplay_Wig_Buttercup_Persimmon_SI-064_1.jpg"><br>
+           <span id = "price2"> </span>
+           <p id = "m">A gorgeous medium length buttercup wig. Includes a skin cap part on the left when worn that starts at the forehead 4" (10cm) long and is 2" (5cm) wide. The part can be mobed along the skin cap to any position with heat from a hair dryer.</p><br>
+           <input id="quantity2" type = "text">
+           <h2 id = "long">Long Wig</h2>
+           <img src = "images\Silky_Cosplay_Wig_Nina_Sky_Clue_SI-030_1.jpg"><br>
+           <span id = "price3"> </span>
+           <p id = "l">A stunning long sky blue wig. Short feather cropped bangs measure 7.5" (18cm) from crown to tip, and should hit around the eyebrows. Overall length from crown to back with wave is 26" (66cm)</p><br>
+           <input id = "quantity3" type = "text"> <br> <br>
+       </div>
+       <div id="buttonclick">
+           <button onclick = "purchase();">Checkout</button><br><br>
+       </div>
+       <div id = "output"></div>
+   </body>
+</html>
+
+
+
