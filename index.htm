@@ -116,12 +116,27 @@
                var csubtotal = (parseFloat(wp1) * quantity1.value) + (parseFloat(wp2) * quantity2.value) + (parseFloat(wp3) * quantity3.value);
                var tax = subtotal * 0.0875;
                var shipping;
+               var pgreeting;
                if (subtotal < 100){
                    shipping = 25.00;
                } else if (subtotal >= 100 && subtotal <= 200){
                    shipping = 10.00;
                } else if (subtotal > 200){
                    shipping = 0.00;
+               }
+               if (subtotal < 100){
+                   pgreeting = "Spend more money to earn more points!";
+               } else if (subtotal >= 100 && subtotal < 200){
+                   pgreeting = "You've earned 10 Points!";
+               } else if (subtotal >= 200){
+                   pgreeting = "You've earned 20 Points!";
+               } else if (subtotal >= 300){
+                   pgreeting = "You've earned 30 Points!";
+               } else if (subtotal >= 400){
+                   pgreeting = "You've earned 40 Points!";
+               }
+               } else if (subtotal >= 500){
+                   pgreeting = "Wow! You've earned 50 Points!";
                }
                var total = subtotal + tax + shipping;
                var profit = total - csubtotal;
@@ -131,6 +146,7 @@
                build += "Shipping: $" + shipping + "<br>";
                build += "___________________<br>";
                build += "Total: $"+ total.toFixed(2) + "<br>";
+               build += "Points: " + pgreeting;
                output.innerHTML = build;
               
            console.log("Customer Total: $" + total.toFixed(2) + "\n");
